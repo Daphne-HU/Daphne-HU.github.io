@@ -51,18 +51,11 @@ button:hover:enabled {
     display: flex;
     flex-direction: column;
     margin: 1em 0;
+    align-items: center;
 }
 
 .color-controls label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0.5em 0;
-}
-
-.color-controls input[type="range"] {
-    margin-left: 1em;
-    flex: 1;
+    margin-bottom: 0.5em;
 }
 
 .color-preview {
