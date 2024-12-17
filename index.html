@@ -1,12 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LedsPhilipp Controller</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff"/>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="darkred" />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="icon-192.png" type="image/png" />
 </head>
 <body>
     <header>
@@ -19,15 +27,15 @@
             <div class="color-controls">
                 <label>
                     R:
-                    <input id="rSlider" type="range" min="0" max="255" value="255"/>
+                    <input id="rSlider" type="range" min="0" max="255" value="255" />
                 </label>
                 <label>
                     G:
-                    <input id="gSlider" type="range" min="0" max="255" value="255"/>
+                    <input id="gSlider" type="range" min="0" max="255" value="255" />
                 </label>
                 <label>
                     B:
-                    <input id="bSlider" type="range" min="0" max="255" value="255"/>
+                    <input id="bSlider" type="range" min="0" max="255" value="255" />
                 </label>
             </div>
             <div class="color-preview" id="colorPreview"></div>
@@ -35,8 +43,24 @@
         </div>
     </main>
     <footer>
-        <p>©2024 Control App by Daphne</p>
+        <p>©️2024 Control App by Daphne</p>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Register the service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(err => {
+                        console.error('Service Worker registration failed:', err);
+                    });
+            });
+        }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
