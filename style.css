@@ -1,82 +1,151 @@
-body {
+html, body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fafafa;
-    color: #333;
+    padding: 0;
+    height: 100%;
+    font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+    color: #ffffff;
+    background: 
+        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+        url('naruto-bg.jpg') center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
-header, footer {
-    background: #6200ee;
-    color: #fff;
-    padding: 1em;
+/* Lighter header background so black text is visible.
+   Increased vertical padding for a slightly "wider" feel. */
+header {
+    background: rgba(100, 100, 100, 0.5);
+    backdrop-filter: blur(3px);
+    padding: 1em 0;
     text-align: center;
 }
 
+header h1 {
+    margin: 0;
+    font-weight: 1500;
+    font-size: 1.2em; /* same size */
+    color: #000; /* black text */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Subtle, minimal footer remains the same */
+footer {
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: 0.5em 1em;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.75em;
+    color: #ccc;
+    font-weight: 300;
+}
+
 main {
-    padding: 1em;
+    margin-top: 1.5em;  /* No extra top margin */
+    flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center; /* Keeps horizontal centering if desired */
+    align-items: flex-start; /* Aligns content at the top instead of center */
+    padding: 1em;  /* Reduced padding to move content closer to the top */
+    box-sizing: border-box;
+}
+
+.control-card {
+    background: rgba(30,30,30,0.85);
+    border-radius: 12px;
+    padding: 2em;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(4px);
 }
 
 .controls {
-    margin-top: 2em;
+    margin-top: 1.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 button {
-    background: #6200ee;
+    background: #E75B00;
     color: #fff;
     border: none;
-    padding: 0.8em 1.2em;
+    padding: 0.8em 1em;
     font-size: 1em;
-    margin: 0.5em;
-    border-radius: 4px;
+    margin: 0.2em 0;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
-    font-weight: bold;
-}
-
-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    color: #666;
+    font-weight: 500;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    letter-spacing: 0.5px;
 }
 
 button:hover:enabled {
-    background: #7f39fb;
+    background: #d94e00;
+    box-shadow: 0 4px 10px rgba(231,91,0,0.3);
+}
+
+button:active:enabled {
+    background: #c24500;
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: #444;
+    cursor: not-allowed;
+    color: #aaa;
 }
 
 .color-picker-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 #colorWheel {
-    border-radius: 50%;
+    border-radius: 80%;
     cursor: crosshair;
     transition: transform 0.2s;
+    border: 5px solid #5a5a5a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 0 10px rgba(231,91,0,0.1);
 }
 
 #colorWheel:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
 
 .color-preview {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid #333;
+    border: 2px solid #2a2a2a;
     margin-top: 1em;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    background: rgb(255,255,255);
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.9em;
+body, main {
+    overflow: auto;
+}
+
+@media (max-width: 320px) {
+    header h1 {
+        font-size: 0.9em;
+    }
+
+    .control-card {
+        padding: 1em;
+    }
 }

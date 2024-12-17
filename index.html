@@ -6,30 +6,32 @@
     <title>LedsPhilipp Controller</title>
 
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#6200EE" />
+    <meta name="theme-color" content="#E75B00" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="icon-192.png" type="image/png" />
 
 </head>
 <body>
     <header>
-        <h1>LedsPhilipp Control Panel</h1>
+        <h1>Philipp's LED Control Panel</h1>
     </header>
     <main>
-        <button id="connectBtn">Connect to LedsPhilipp</button>
-        <div class="controls">
-            <button id="toggleBtn" disabled>Toggle On/Off</button>
-            
-            <div class="color-picker-container">
-                <canvas id="colorWheel" width="200" height="200"></canvas>
-                <div class="color-preview" id="colorPreview"></div>
+        <div class="control-card">
+            <button id="connectBtn">Connect to Philipp's LED's</button>
+            <div class="controls">
+                <button id="toggleBtn" disabled>Toggle On/Off</button>
+                
+                <div class="color-picker-container">
+                    <canvas id="colorWheel" width="200" height="200"></canvas>
+                    <div class="color-preview" id="colorPreview"></div>
+                </div>
+                
+                <button id="applyColorBtn" disabled>Apply Color</button>
             </div>
-            
-            <button id="applyColorBtn" disabled>Apply Color</button>
         </div>
     </main>
     <footer>
-        <p>©️2024 Control App by Daphne</p>
+        <p>©2024 Control App by Daphne</p>
     </footer>
 
     <script>
