@@ -15,8 +15,8 @@ const state = {
     isConnected: false,
     isOn: false,
     r: 255,
-    g: 255,
-    b: 255
+    g: 100,
+    b: 30
 };
 
 const connectBtn = document.getElementById('connectBtn');
@@ -82,7 +82,7 @@ toggleBtn.addEventListener('click', async () => {
     state.isOn = !state.isOn;
     await writeOnOff(state.isOn);
     toggleBtn.textContent = state.isOn ? 'Turn Off' : 'Turn On';
-    if (!state.isOn) {
+    if (state.isOn) {
         await writeColor(state.r, state.g, state.b);
     }
 });
