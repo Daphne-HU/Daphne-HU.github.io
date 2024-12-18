@@ -13,19 +13,22 @@ html, body {
 }
 
 header {
-    background: rgba(100, 100, 100, 0.5);
-    backdrop-filter: blur(3px);
-    padding: 1em 0;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: .7em 1em;
     text-align: center;
+    border: none;
+    box-shadow: none;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
 header h1 {
     margin: 0;
-    font-weight: 1500;
+    font-weight: 300;
     font-size: 1.2em; 
-    color: #000; 
+    color: #ccc; 
     letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 footer {
@@ -47,7 +50,7 @@ footer p {
 }
 
 main {
-    margin-top: 1.5em;
+    margin-top: 0em;
     flex: 1;
     display: flex;
     justify-content: center;
