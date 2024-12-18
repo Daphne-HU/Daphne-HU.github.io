@@ -12,8 +12,6 @@ html, body {
     flex-direction: column;
 }
 
-/* Lighter header background so black text is visible.
-   Increased vertical padding for a slightly "wider" feel. */
 header {
     background: rgba(100, 100, 100, 0.5);
     backdrop-filter: blur(3px);
@@ -24,13 +22,12 @@ header {
 header h1 {
     margin: 0;
     font-weight: 1500;
-    font-size: 1.2em; /* same size */
-    color: #000; /* black text */
+    font-size: 1.2em; 
+    color: #000; 
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
-/* Subtle, minimal footer remains the same */
 footer {
     background: rgba(0,0,0,0.3);
     color: #fff;
@@ -50,13 +47,14 @@ footer p {
 }
 
 main {
-    margin-top: 1.5em;  /* No extra top margin */
+    margin-top: 1.5em;
     flex: 1;
     display: flex;
-    justify-content: center; /* Keeps horizontal centering if desired */
-    align-items: flex-start; /* Aligns content at the top instead of center */
-    padding: 1em;  /* Reduced padding to move content closer to the top */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1em;
     box-sizing: border-box;
+    overflow: auto;
 }
 
 .control-card {
@@ -64,7 +62,7 @@ main {
     border-radius: 12px;
     padding: 2em;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    max-width: 300px;
+    max-width: 350px;
     width: 100%;
     text-align: center;
     backdrop-filter: blur(4px);
@@ -89,6 +87,8 @@ button {
     font-weight: 500;
     transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
     letter-spacing: 0.5px;
+    width: 100%;
+    max-width: 250px;
 }
 
 button:hover:enabled {
@@ -112,14 +112,21 @@ button:disabled {
     flex-direction: column;
     align-items: center;
     margin: 1em 0;
+    width: 100%;
+    max-width: 250px;
 }
 
+/* Make the canvas responsive */
 #colorWheel {
-    border-radius: 80%;
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
     cursor: crosshair;
     transition: transform 0.2s;
     border: 5px solid #5a5a5a;
+    box-sizing: border-box;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 0 10px rgba(231,91,0,0.1);
+    display: block;
 }
 
 #colorWheel:active {
@@ -136,16 +143,34 @@ button:disabled {
     background: rgb(255,255,255);
 }
 
-body, main {
-    overflow: auto;
+/* Small screens */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1em;
+    }
+    .control-card {
+        padding: 1.5em;
+    }
+    button {
+        font-size: 0.95em;
+    }
+}
+
+/* Larger screens - give it some breathing room */
+@media (min-width: 768px) {
+    .control-card {
+        max-width: 400px;
+    }
 }
 
 @media (max-width: 320px) {
     header h1 {
         font-size: 0.9em;
     }
-
     .control-card {
         padding: 1em;
+    }
+    button {
+        font-size: 0.9em;
     }
 }

@@ -20,13 +20,22 @@ const connectBtn = document.getElementById('connectBtn');
 const toggleBtn = document.getElementById('toggleBtn');
 const applyColorBtn = document.getElementById('applyColorBtn');
 const colorPreview = document.getElementById('colorPreview');
-
-// Create and draw the color wheel
 const colorWheelCanvas = document.getElementById('colorWheel');
 const ctx = colorWheelCanvas.getContext('2d');
 
+// Function to size and draw color wheel
+function sizeAndDrawColorWheel() {
+    // Set canvas size dynamically based on container width
+    const container = document.querySelector('.color-picker-container');
+    const size = Math.min(container.clientWidth, 250); // limit max size if needed
+    colorWheelCanvas.width = size;
+    colorWheelCanvas.height = size;
+    drawColorWheel(ctx);
+}
+
 // Draw color wheel on load
-drawColorWheel(ctx);
+window.addEventListener('load', sizeAndDrawColorWheel);
+window.addEventListener('resize', sizeAndDrawColorWheel);
 
 // Function to draw a color wheel
 function drawColorWheel(context) {
@@ -41,7 +50,6 @@ function drawColorWheel(context) {
             const d = Math.sqrt(dx*dx + dy*dy);
 
             if (d <= radius) {
-                // Angle and distance from center
                 const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 180;
                 const sat = d / radius;
                 const [r, g, b] = hsvToRgb(angle, sat, 1);
@@ -56,7 +64,7 @@ function drawColorWheel(context) {
     context.putImageData(image, 0, 0);
 }
 
-// Convert HSV to RGB (for the color wheel)
+// Convert HSV to RGB
 function hsvToRgb(h, s, v) {
     let f, p, q, t;
     let i = Math.floor(h / 60) % 6;
@@ -136,7 +144,6 @@ toggleBtn.addEventListener('click', async () => {
     }
 });
 
-// Handle color selection from the color wheel
 colorWheelCanvas.addEventListener('click', (e) => {
     const rect = colorWheelCanvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
